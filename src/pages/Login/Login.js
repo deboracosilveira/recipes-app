@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LoginContainer from './styles';
 
 const handleValue = (event, setFunction) => {
   setFunction(event.target.value);
@@ -31,10 +32,10 @@ const Login = () => {
   const [disabled, setDisabled] = useState(true);
 
   return (
-    <div>
-      <aside>
-        <h1>start cooking!</h1>
-        <input
+    <LoginContainer>
+      <LoginContainer.Aside>
+        <LoginContainer.H1>Start cooking!</LoginContainer.H1>
+        <LoginContainer.Input
           data-testid="email-input"
           type="email"
           placeholder="Email"
@@ -43,7 +44,7 @@ const Login = () => {
             validateInputs(email, password, setDisabled);
           }}
         />
-        <input
+        <LoginContainer.Input
           data-testid="password-input"
           type="password"
           placeholder="Password"
@@ -52,18 +53,18 @@ const Login = () => {
             validateInputs(email, password, setDisabled);
           }}
         />
-        <Link to="/comidas">
-          <button
+        <LoginContainer.Link to="/comidas">
+          <LoginContainer.Button
             data-testid="login-submit-btn"
             type="button"
             disabled={disabled}
             onClick={() => setLocalStorage(email)}
           >
             Log in
-          </button>
-        </Link>
-      </aside>
-    </div>
+          </LoginContainer.Button>
+        </LoginContainer.Link>
+      </LoginContainer.Aside>
+    </LoginContainer>
   );
 };
 

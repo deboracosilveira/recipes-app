@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Context } from '../../context/Context';
 import { getFoodsByIngredient, getFoodsByName, getFoodsByFirstLetter } from '../../services/api';
+import { SearchBarContainer } from './styles';
 
 const handler = (event, setFunc) => {
   setFunc(event.target.value);
@@ -84,7 +85,7 @@ const SearchBar = ({ foodType, ingredient }) => {
   }, []);
 
   const createInputRadio = (value, testid, name) => (
-    <label htmlFor={value}>
+    <SearchBarContainer.RadioLabel htmlFor={value}>
       <input
         value={value}
         type="radio"
@@ -94,21 +95,23 @@ const SearchBar = ({ foodType, ingredient }) => {
         onChange={(event) => handler(event, setSelectedOption)}
       />
       {name}
-    </label>
+    </SearchBarContainer.RadioLabel>
   );
   if (redirect.shouldRedirect) return <Redirect to={`/${redirect.type}/${redirect.id}`} />;
   return (
-    <div>
-      <input
+    <SearchBarContainer>
+      <SearchBarContainer.Input
         type="text"
         placeholder="Search recipe"
         data-testid="search-input"
         onChange={(event) => handler(event, setInputText)}
       />
-      {createInputRadio('ingredient', 'ingredient-search-radio', 'Ingredient')}
-      {createInputRadio('name', 'name-search-radio', 'Name')}
-      {createInputRadio('first-letter', 'first-letter-search-radio', 'First letter')}
-      <button
+      <SearchBarContainer.Radios>
+        {createInputRadio('ingredient', 'ingredient-search-radio', 'Ingredient')}
+        {createInputRadio('name', 'name-search-radio', 'Name')}
+        {createInputRadio('first-letter', 'first-letter-search-radio', 'First letter')}
+      </SearchBarContainer.Radios>
+      <SearchBarContainer.Button
         data-testid="exec-search-btn"
         type="button"
         onClick={() => {
@@ -120,8 +123,8 @@ const SearchBar = ({ foodType, ingredient }) => {
         }}
       >
         Search
-      </button>
-    </div>
+      </SearchBarContainer.Button>
+    </SearchBarContainer>
   );
 };
 

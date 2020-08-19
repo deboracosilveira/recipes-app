@@ -1,25 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const RecipeCard = styled.div`
-  width: 200px;
-`;
+import FoodCardContainer from './styles';
 
 const FoodCard = ({ index, thumb, str, id, foodType }) => (
-  <RecipeCard data-testid={`${index}-recipe-card`}>
-    {/* Retirar o 'style in line' da tag img, e fazer o css para ela. */}
-    <Link to={`/${foodType}/${id}`}>
-      <img
-        data-testid={`${index}-card-img`}
-        src={thumb}
-        alt={str}
-        style={{ width: '200px', borderRadius: '50%' }}
-      />
-      <p data-testid={`${index}-card-name`}>{str}</p>
-    </Link>
-  </RecipeCard>
+  <FoodCardContainer data-testid={`${index}-recipe-card`}>
+    <FoodCardContainer.Link to={`/${foodType}/${id}`}>
+      <FoodCardContainer.Img data-testid={`${index}-card-img`} src={thumb} alt={str} />
+      <FoodCardContainer.Name data-testid={`${index}-card-name`}>{str}</FoodCardContainer.Name>
+    </FoodCardContainer.Link>
+  </FoodCardContainer>
 );
 
 export default FoodCard;
