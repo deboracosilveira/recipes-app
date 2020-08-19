@@ -12,6 +12,7 @@ const LoginContainer = styled(AppContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 `;
 
 LoginContainer.Aside = styled.aside`

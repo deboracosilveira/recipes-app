@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-const AppContainer = styled.section`
-  height: 100vh;
+const AppContainer = styled.div`
+  height: 100%;
   width: 100vw;
-  padding: 3% 10%;
   box-sizing: border-box;
 
   @media (max-width: 800px) {

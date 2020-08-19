@@ -1,21 +1,23 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import ProfileIcon from '../../images/profileIcon.svg';
-// import SearchIcon from '../../images/searchIcon.svg';
+import Input from '../../styledComponents/Input/styles';
+import Button from '../../styledComponents/Button/styles';
 
 const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 HeaderContainer.DefaultHeader = styled.div`
   align-items: center;
-  background-color: var(--primary);
+  background-color: var(--greenLight);
   display: flex;
   height: 10vh;
   justify-content: space-between;
   padding: 10px 20px;
   border-radius: 0 0 30px 30px;
+  width: 100vw;
 `;
 
 HeaderContainer.UserLink = styled(Link)`
@@ -24,9 +26,11 @@ HeaderContainer.UserLink = styled(Link)`
   height: 90%;
 `;
 
+HeaderContainer.Img = styled.img``;
+
 HeaderContainer.Title = styled.h1`
-  color: var(--white);
   letter-spacing: 5px;
+  font-weight: 300;
 `;
 
 HeaderContainer.SearchButton = styled.button`
@@ -36,4 +40,53 @@ HeaderContainer.SearchButton = styled.button`
   height: 90%;
 `;
 
-export default HeaderContainer;
+const SearchBarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--primary);
+  border-top-color: white;
+  border-radius: 0 0 30px 30px;
+  width: 85vw;
+`;
+
+SearchBarContainer.Input = styled(Input)`
+  width: 70%;
+
+  @media (max-width: 800px) {
+    width: 80%;
+  }
+`;
+
+SearchBarContainer.Radios = styled.div`
+  display: flex;
+  margin: 2%;
+  justify-content: space-around;
+  width: 50%;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    width: 75%;
+  }
+`;
+
+SearchBarContainer.RadioLabel = styled.label`
+  font-size: 1.2em;
+
+  @media (max-width: 800px) {
+    font-size: 1.4em;
+    margin-bottom: 5%;
+  }
+`;
+
+SearchBarContainer.Button = styled(Button)`
+  width: 20%;
+  padding: 5px;
+  margin-bottom: 15px;
+
+  @media (max-width: 800px) {
+    width: 40%;
+  }
+`;
+
+export { HeaderContainer, SearchBarContainer };
