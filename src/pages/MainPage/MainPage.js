@@ -1,31 +1,15 @@
 import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { Context } from '../../context/Context';
-import {
-  fetchApi,
-  getFoodsByCategory,
-} from '../../services/api';
+import { fetchApi, getFoodsByCategory } from '../../services/api';
 import { Loading, Header, FoodCard, BottomMenu } from '../../components';
 import MainPageContainer from './styles';
-
-const FoodsContainer = styled.div`
-  width: 100vw;
-  padding: 5%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-`;
 
 const MainPage = ({ match: { path }, location: { searchByIngredient } }) => {
   const [categoryFiltered, setCategoryFiltered] = useState(null);
 
-  const {
-    loading,
-    mealValues,
-    drinkValues,
-  } = useContext(Context);
+  const { loading, mealValues, drinkValues } = useContext(Context);
 
   const foods = path.includes('comidas') ? mealValues : drinkValues;
 
@@ -43,20 +27,26 @@ const MainPage = ({ match: { path }, location: { searchByIngredient } }) => {
   return (
     <MainPageContainer>
       <Header pageTitle={foods.title} ingredient={searchByIngredient} />
-      <button data-testid="All-category-filter" type="button" onClick={() => filterByCategory()}>
-        All
-      </button>
-      {foods.categories.slice(0, 5).map(({ strCategory }) => (
-        <button
-          key={strCategory}
-          data-testid={`${strCategory}-category-filter`}
+      <MainPageContainer.Categories>
+        <MainPageContainer.CategoryBtn
+          data-testid="All-category-filter"
           type="button"
-          onClick={() => filterByCategory(strCategory)}
+          onClick={() => filterByCategory()}
         >
-          {strCategory}
-        </button>
-      ))}
-      <FoodsContainer>
+          All
+        </MainPageContainer.CategoryBtn>
+        {foods.categories.slice(0, 5).map(({ strCategory }) => (
+          <MainPageContainer.CategoryBtn
+            key={strCategory}
+            data-testid={`${strCategory}-category-filter`}
+            type="button"
+            onClick={() => filterByCategory(strCategory)}
+          >
+            {strCategory}
+          </MainPageContainer.CategoryBtn>
+        ))}
+      </MainPageContainer.Categories>
+      <MainPageContainer.FoodContainer>
         {foods.list.slice(0, 12).map((food, index) => (
           <FoodCard
             key={`${foods[`id${foods.key}`]} ${foods[`str${foods.key}`]}`}
@@ -67,7 +57,7 @@ const MainPage = ({ match: { path }, location: { searchByIngredient } }) => {
             foodType={foods.path}
           />
         ))}
-      </FoodsContainer>
+      </MainPageContainer.FoodContainer>
       <BottomMenu />
     </MainPageContainer>
   );

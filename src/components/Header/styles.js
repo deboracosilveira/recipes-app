@@ -7,6 +7,7 @@ const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 HeaderContainer.DefaultHeader = styled.div`
@@ -14,16 +15,15 @@ HeaderContainer.DefaultHeader = styled.div`
   background-color: var(--greenLight);
   display: flex;
   height: 10vh;
-  justify-content: space-between;
-  padding: 10px 20px;
+  justify-content: space-around;
+  padding: 10px 30px;
   border-radius: 0 0 30px 30px;
-  width: 100vw;
+  width: 100%;
 `;
 
 HeaderContainer.UserLink = styled(Link)`
   border: 0;
   cursor: pointer;
-  height: 90%;
 `;
 
 HeaderContainer.Img = styled.img``;
@@ -31,6 +31,7 @@ HeaderContainer.Img = styled.img``;
 HeaderContainer.Title = styled.h1`
   letter-spacing: 5px;
   font-weight: 300;
+  margin: 0;
 `;
 
 HeaderContainer.SearchButton = styled.button`
