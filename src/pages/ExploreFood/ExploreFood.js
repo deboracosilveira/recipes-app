@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { BottomMenu, Header, Loading } from '../../components';
 import { getFoodByRandom } from '../../services/api';
+import ExploreFoodContainer from './styles';
 
 const ExploreFood = ({ match: { path } }) => {
   const [food, setFood] = useState([]);
@@ -30,7 +31,7 @@ const ExploreFood = ({ match: { path } }) => {
 
   if (loading) return <Loading />;
   return (
-    <div>
+    <ExploreFoodContainer>
       <Header pageTitle={title} />
       <Link to={`/explorar/${pathFood}/ingredientes`} data-testid="explore-by-ingredient">
         Por Ingredientes
@@ -44,7 +45,7 @@ const ExploreFood = ({ match: { path } }) => {
         Me Surpreenda!
       </Link>
       <BottomMenu />
-    </div>
+    </ExploreFoodContainer>
   );
 };
 

@@ -2,14 +2,29 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const FoodCardContainer = styled.div`
-  width: 200px;
+  width: 230px;
   text-align: center;
   margin: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #e0ecec;
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+
+  @media (max-width: 800px) {
+    width: 330px;
+  }
 `;
 
 FoodCardContainer.Img = styled.img`
   width: 200px;
   border-radius: 50%;
+
+  @media (max-width: 800px) {
+    width: 280px;
+  }
 `;
 
 FoodCardContainer.Link = styled(Link)`
@@ -17,15 +32,10 @@ FoodCardContainer.Link = styled(Link)`
 `;
 
 FoodCardContainer.Name = styled.p`
-  color: white;
+  color: var(--primary);
   font-size: 1.4rem;
-  background-color: var(--primary);
+  background-color: white;
   border-radius: 5px;
-
-  &:hover,
-  &:focus {
-    opacity: 0.5;
-  }
 `;
 
 export default FoodCardContainer;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BottomMenu, Header } from '../../components';
+import ExploreContainer from './styles';
 
 const Explore = () => (
-  <div>
+  <ExploreContainer>
     <Header pageTitle="Explorar" />
     <Link to="/explorar/comidas" data-testid="explore-food">
       Explorar Comidas
@@ -12,7 +13,7 @@ const Explore = () => (
       Explorar Bebidas
     </Link>
     <BottomMenu />
-  </div>
+  </ExploreContainer>
 );
 
 export default Explore;
