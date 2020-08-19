@@ -7,7 +7,7 @@ const Button = styled.button`
   color: var(--white);
   cursor: pointer;
   font-size: 1.3rem;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 2px;
   padding: 3%;
   text-align: center;
