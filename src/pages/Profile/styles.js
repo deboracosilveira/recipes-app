@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import AppContainer from '../../styledComponents/AppContainer/styles';
 import Button from '../../styledComponents/Button/styles';
 
-const MainPageContainer = styled(AppContainer)`
+const ProfileContainer = styled(AppContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,12 +11,17 @@ const MainPageContainer = styled(AppContainer)`
   flex-direction: column;
 `;
 
-MainPageContainer.Categories = styled.div`
+ProfileContainer.Email = styled.p`
+  font-size: 1.5rem;
+`;
+
+ProfileContainer.Links = styled.div`
   display: flex;
+  flex-direction: column;
   width: 80%;
-  flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 15px;
+  align-items: center;
 
   @media (max-width: 800px) {
     margin-top: 10px;
@@ -23,26 +29,21 @@ MainPageContainer.Categories = styled.div`
   }
 `;
 
-MainPageContainer.CategoryBtn = styled(Button)`
-  width: 120px;
+ProfileContainer.Link = styled(Link)`
+  width: 300px;
   padding: 10px;
   margin: 15px;
   font-size: 15px;
   word-wrap: break-word;
 
   @media (max-width: 800px) {
-    width: 110px;
+    width: 280px;
     padding: 8px;
     margin: 5px;
     font-size: 15px;
   }
 `;
 
-MainPageContainer.FoodContainer = styled.div`
-  width: 95%;
-  padding: 1% 5% 5% 5%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-`;
-export default MainPageContainer;
+ProfileContainer.Button = styled(Button)``;
+
+export default ProfileContainer;
