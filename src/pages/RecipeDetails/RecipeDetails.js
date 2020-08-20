@@ -41,53 +41,58 @@ const RecipeDetails = ({
 
   return (
     <RecipeDetailsContainer>
-      <img
-        data-testid="recipe-photo"
-        src={food.item[`str${food.key}Thumb`]}
-        alt={food[`str${food.key}`]}
-        style={{ width: '30vw' }}
-      />
-      <h1 data-testid="recipe-title">{food.item[`str${food.key}`]}</h1>
-      <button
-        data-testid="share-btn"
-        type="button"
-        onClick={(e) => copyToClipboard(food.path, id, e.target)}
-      >
-        <img src={ShareBtn} alt="share-btn" />
-      </button>
-      <button
-        data-testid="favorite-btn"
-        type="button"
-        src={heartImage}
-        onClick={() => {
-          addToFavoriteRecipes(food, isFavorite);
-          setIsFavorite(!isFavorite);
-        }}
-      >
-        <img src={heartImage} alt={`isFavorite? ${isFavorite}`} />
-      </button>
-      <Category food={food.item} type={type} />
-      <Ingredients food={food.item} path={path} />
-      <Instructions instructions={food.item.strInstructions} />
-      {!inProgress && (
-        <div>
-          {food.item.strYoutube && <Video path={path} food={food.item} />}
-          <Recomendations type={type} />
-          <Link to={`/${food.path}/${food.item[`id${food.key}`]}/in-progress`}>
-            <Button.fixed
-              data-testid="start-recipe-btn"
-              onClick={() => addToInProgressRecipes(food, type, isInProgress)}
-            >
-              {isInProgress ? 'Continuar Receita' : 'Iniciar Receita'}
-            </Button.fixed>
+      <RecipeDetailsContainer.Cover>
+        <RecipeDetailsContainer.Img
+          data-testid="recipe-photo"
+          src={food.item[`str${food.key}Thumb`]}
+          alt={food[`str${food.key}`]}
+        />
+      </RecipeDetailsContainer.Cover>
+      <RecipeDetailsContainer.Info>
+        <h1 data-testid="recipe-title">{food.item[`str${food.key}`]}</h1>
+        <button
+          data-testid="share-btn"
+          type="button"
+          onClick={(e) => copyToClipboard(food.path, id, e.target)}
+        >
+          <img src={ShareBtn} alt="share-btn" />
+        </button>
+        <button
+          data-testid="favorite-btn"
+          type="button"
+          src={heartImage}
+          onClick={() => {
+            addToFavoriteRecipes(food, isFavorite);
+            setIsFavorite(!isFavorite);
+          }}
+        >
+          <img src={heartImage} alt={`isFavorite? ${isFavorite}`} />
+        </button>
+        <Category food={food.item} type={type} />
+        <Ingredients food={food.item} path={path} />
+        <Instructions instructions={food.item.strInstructions} />
+        {!inProgress && (
+          <div>
+            {food.item.strYoutube && <Video path={path} food={food.item} />}
+            <Recomendations type={type} />
+            <Link to={`/${food.path}/${food.item[`id${food.key}`]}/in-progress`}>
+              <RecipeDetailsContainer.Btn
+                data-testid="start-recipe-btn"
+                onClick={() => addToInProgressRecipes(food, type, isInProgress)}
+              >
+                {isInProgress ? 'Continuar Receita' : 'Iniciar Receita'}
+              </RecipeDetailsContainer.Btn>
+            </Link>
+          </div>
+        )}
+        {inProgress && (
+          <Link to="/receitas-feitas">
+            <RecipeDetailsContainer.Btn data-testid="finish-recipe-btn">
+              Finish Recipe
+            </RecipeDetailsContainer.Btn>
           </Link>
-        </div>
-      )}
-      {inProgress && (
-        <Link to="/receitas-feitas">
-          <Button.fixed data-testid="finish-recipe-btn">Finish Recipe</Button.fixed>
-        </Link>
-      )}
+        )}
+      </RecipeDetailsContainer.Info>
     </RecipeDetailsContainer>
   );
 };

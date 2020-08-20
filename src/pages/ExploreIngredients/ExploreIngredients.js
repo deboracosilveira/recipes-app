@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { BottomMenu, Header, Loading } from '../../components';
 import { getIngredientsList, getURLIngredientsImg } from '../../services/api';
+import ExploreIngredientsContainer from './styles';
 
 const ExploreIngredients = ({ match: { path } }) => {
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ const ExploreIngredients = ({ match: { path } }) => {
 
   if (loading) return <Loading />;
   return (
-    <div>
+    <ExploreIngredientsContainer>
       <Header pageTitle="Explorar Ingredientes" />
       {ingredientsName.map((ingredient, index) => (
         <Link
@@ -38,7 +39,7 @@ const ExploreIngredients = ({ match: { path } }) => {
         </Link>
       ))}
       <BottomMenu />
-    </div>
+    </ExploreIngredientsContainer>
   );
 };
 

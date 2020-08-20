@@ -12,6 +12,7 @@ const ProfileContainer = styled(AppContainer)`
 `;
 
 ProfileContainer.Email = styled.p`
+  margin-top: 60px;
   font-size: 1.5rem;
 `;
 
