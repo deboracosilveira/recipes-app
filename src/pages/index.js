@@ -7,3 +7,4 @@ export { default as MainPage } from './MainPage/MainPage';
 export { default as ExploreIngredients } from './ExploreIngredients/ExploreIngredients';
 export { default as Profile } from './Profile/Profile';
 export { default as RecipeDetails } from './RecipeDetails/RecipeDetails';
+export { default as NotFoundPage } from './NotFoundPage/NotFoundPage';

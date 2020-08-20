@@ -32,6 +32,10 @@ HeaderContainer.Title = styled.h1`
   letter-spacing: 5px;
   font-weight: 300;
   margin: 0;
+
+  @media (max-width: 800px) {
+    font-size: 1.3rem;
+  }
 `;
 
 HeaderContainer.SearchButton = styled.button`

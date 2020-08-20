@@ -7,13 +7,13 @@ const DoneRecipes = ({
     path,
   },
 }) => {
-  const initialDoneRecipes = JSON.parse(localStorage.doneRecipes);
-  const [doneRecipes, setDoneRecipes] = useState(initialDoneRecipes);
+  // const initialDoneRecipes = JSON.parse(localStorage.doneRecipes);
+  // const [doneRecipes, setDoneRecipes] = useState(initialDoneRecipes);
 
   return (
     <div>
       <Header pageTitle="Receitas Feitas" />
-      <FilterButtons
+      {/* <FilterButtons
         initialRecipes={initialDoneRecipes}
         recipes={doneRecipes}
         setFunc={setDoneRecipes}
@@ -22,7 +22,8 @@ const DoneRecipes = ({
         {doneRecipes.map((recipe, index) => (
           <FoodInfoCard recipe={recipe} index={index} path={path} />
         ))}
-      </div>
+      </div> */}
+      <h1>Página em construção</h1>
     </div>
   );
 };
