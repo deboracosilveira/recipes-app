@@ -18,12 +18,8 @@ const Button = styled.button`
   &:hover,
   &:focus {
     opacity: 0.5;
+    border: 0;
   }
-`;
-
-Button.fixed = styled.button`
-  position: fixed;
-  bottom: 0px;
 `;
 
 export default Button;
